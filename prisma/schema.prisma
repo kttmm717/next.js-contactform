@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+  // output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  password  String
+  create_at DateTime @default(now())
+
+  @@map("users")
+}
+
+model Contact {
+  id          Int      @id @default(autoincrement())
+  category_id Int
+  category    Category @relation(fields: [category_id], references: [id])
+  // 外部キーの設定
+  name        String
+  gender      String
+  email       String
+  tel         String
+  address     String
+  building    String?
+  content     String
+  create_at   DateTime @default(now())
+
+  @@map("contacts")
+}
+
+model Category {
+  id        Int       @id @default(autoincrement())
+  category  String
+  contacts  Contact[] 
+  // Categoryが複数のContactを持つ（1対多）ことを示す
+  create_at DateTime  @default(now())
+
+  @@map("categories")
+}
