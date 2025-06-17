@@ -1,8 +1,10 @@
 'use client';
 
 import { useFormData } from "@/providers/FormProvider";
-import Button from "@/ui/button";
+import Button from "@/ui/buttons/button";
+import Spinner from "@/ui/Spinner";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function ConfirmPage() {
 
@@ -10,6 +12,8 @@ export default function ConfirmPage() {
     //state [formData, setFormData]の、formDataのほうをインポート
 
     const router = useRouter();
+
+    const [sending, setSending] = useState(false);
 
     if (!formData) {
         return (
@@ -19,8 +23,9 @@ export default function ConfirmPage() {
         )
     };
 
-    const handleSecd = async() => {
+    const handleSecd = async () => {
         try {
+            setSending(true);
             //API経由でデータをサーバーに送信
             const res = await fetch('/api/contact', { //送信先
                 method: 'POST', // 送信方法
@@ -31,13 +36,15 @@ export default function ConfirmPage() {
                 body: JSON.stringify(formData),
                 //実際に送りたいデータ（JSON文字列に変換してから）
             });
-            if (res.ok) { 
+            if (res.ok) {
                 router.push('/contact/thanks');
             } else {
                 console.error('送信失敗:', await res.text());
             }
         } catch (error) {
             console.error('エラー:', error);
+        } finally {
+            setSending(false);
         }
     }
 
@@ -87,9 +94,15 @@ export default function ConfirmPage() {
                 </tbody>
             </table>
 
-            <div className="text-center mt-5">
+            <div className="flex items-center justify-center mt-8">
                 {/* 送信ボタン */}
-                <Button onClick={handleSecd}>送信</Button>
+                <Button
+                    onClick={handleSecd}
+                    className='flex items-center justify-center gap-2'
+                >
+                    {sending && <Spinner />}
+                    送信
+                </Button>
 
                 {/* 修正ボタン */}
                 <button

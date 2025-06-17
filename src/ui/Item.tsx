@@ -6,7 +6,7 @@ type Props = {
 
 export default function Item({ name }: Props) {
     return (
-        <div className="w-[30%]">
+        <div className="w-[30%] ">
             <span className=" text-sm">{name}</span>
         </div>
     )

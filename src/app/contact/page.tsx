@@ -6,7 +6,7 @@ import InputRadio from "@/ui/InputRadio";
 import Item from "@/ui/Item";
 import ItemRequired from "@/ui/ItemRequired";
 import Textarea from "@/ui/Textarea";
-import Button from "@/ui/button";
+import Button from "@/ui/buttons/button";
 import { ContactFormData, contactSchema } from "@/lib/validation/contactSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useFormData } from '@/providers/FormProvider';
@@ -62,6 +62,7 @@ export default function ContactPage() {
           <ItemRequired name='お名前' />
           <Input
             placeholder='例：山田 太郎'
+            width='[70%]'
             {...register('name')}
           />
         </div>
@@ -98,6 +99,7 @@ export default function ContactPage() {
           <ItemRequired name='メールアドレス' />
           <Input
             placeholder='例：test@gmail.com'
+            width='[70%]'
             {...register('email')}
           />
         </div>
@@ -111,6 +113,7 @@ export default function ContactPage() {
           <ItemRequired name='電話番号' />
           <Input
             placeholder='例：080-1111-2222'
+            width='[70%]'
             {...register('tel')}
           />
         </div>
@@ -124,6 +127,7 @@ export default function ContactPage() {
           <ItemRequired name='住所' />
           <Input
             placeholder='例：新潟県燕市'
+            width='[70%]'
             {...register('address')}
           />
         </div>
@@ -137,6 +141,7 @@ export default function ContactPage() {
           <Item name='建物名' />
           <Input
             placeholder='例：マンション101'
+            width='[70%]'
             {...register('building')}
           />
         </div>
@@ -170,7 +175,7 @@ export default function ContactPage() {
           <p className="text-red-500 text-sm">{errors.content.message}</p>}
 
 
-        <div className="text-center">
+        <div className="text-center mt-4">
           <Button>確認画面</Button>
         </div>
 
