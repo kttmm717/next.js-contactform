@@ -1,10 +1,10 @@
 'use client';
 
 import Button from "@/ui/buttons/button";
-import Input from "@/ui/Input";
-import Item from "@/ui/Item";
+import Input from "@/ui/tags/Input";
+import Item from "@/ui/items/Item";
 import { useActionState } from "react";
-import { authenticate } from "@/lib/actions/actions";
+import { authenticate } from "@/lib/actions/loginUser";
 import { useSearchParams } from "next/navigation";
 import Spinner from "@/ui/Spinner";
 
@@ -29,6 +29,7 @@ export default function LoginPage() {
             <Input
               name="email"
               placeholder='例：test@gmail.com'
+              className='w-full'
             />
           </div>
           <div className="mb-4 space-y-1">
@@ -36,6 +37,7 @@ export default function LoginPage() {
             <Input
               name="password"
               type="password"
+              className='w-full'
             />
           </div>
           {errorMessage && (

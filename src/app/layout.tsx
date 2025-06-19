@@ -1,4 +1,4 @@
-import { geistSans, geistMono } from "@/ui/fonts";
+import { geistSans, geistMono } from "@/ui/fonts/fonts";
 import "./globals.css";
 
 

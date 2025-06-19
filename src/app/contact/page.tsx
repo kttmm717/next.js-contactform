@@ -1,11 +1,11 @@
 'use client';
 
-import CategorySelect from "@/ui/CategorySelect";
-import Input from "@/ui/Input";
-import InputRadio from "@/ui/InputRadio";
-import Item from "@/ui/Item";
-import ItemRequired from "@/ui/ItemRequired";
-import Textarea from "@/ui/Textarea";
+import CategorySelect from "@/ui/tags/CategorySelect";
+import Input from "@/ui/tags/Input";
+import InputRadio from "@/ui/tags/InputRadio";
+import Item from "@/ui/items/Item";
+import ItemRequired from "@/ui/items/ItemRequired";
+import Textarea from "@/ui/tags/Textarea";
 import Button from "@/ui/buttons/button";
 import { ContactFormData, contactSchema } from "@/lib/validation/contactSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -62,7 +62,7 @@ export default function ContactPage() {
           <ItemRequired name='お名前' />
           <Input
             placeholder='例：山田 太郎'
-            width='[70%]'
+            className='w-[70%]'
             {...register('name')}
           />
         </div>
@@ -99,7 +99,7 @@ export default function ContactPage() {
           <ItemRequired name='メールアドレス' />
           <Input
             placeholder='例：test@gmail.com'
-            width='[70%]'
+            className='w-[70%]'
             {...register('email')}
           />
         </div>
@@ -113,7 +113,7 @@ export default function ContactPage() {
           <ItemRequired name='電話番号' />
           <Input
             placeholder='例：080-1111-2222'
-            width='[70%]'
+            className='w-[70%]'
             {...register('tel')}
           />
         </div>
@@ -127,7 +127,7 @@ export default function ContactPage() {
           <ItemRequired name='住所' />
           <Input
             placeholder='例：新潟県燕市'
-            width='[70%]'
+            className='w-[70%]'
             {...register('address')}
           />
         </div>
@@ -141,7 +141,7 @@ export default function ContactPage() {
           <Item name='建物名' />
           <Input
             placeholder='例：マンション101'
-            width='[70%]'
+            className='w-[70%]'
             {...register('building')}
           />
         </div>

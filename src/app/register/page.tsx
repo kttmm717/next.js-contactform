@@ -2,8 +2,8 @@
 
 import { addUser } from "@/lib/actions/addUser";
 import Button from "@/ui/buttons/button";
-import Input from "@/ui/Input";
-import Item from "@/ui/Item";
+import Input from "@/ui/tags/Input";
+import Item from "@/ui/items/Item";
 import Spinner from "@/ui/Spinner";
 import { useActionState, useState } from "react";
 
@@ -29,7 +29,7 @@ export default function RegisterPage() {
 
     formAction(form);
   }
-  
+
 
   return (
     <div className="bg-[#f4efeb] h-[100vh] text-yellow-800 ">
@@ -46,6 +46,7 @@ export default function RegisterPage() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder='例：山田 太郎'
+                className='w-full'
               />
               {state.errors?.name &&
                 <p className="text-red-500 text-sm">
@@ -61,6 +62,7 @@ export default function RegisterPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder='例：test@gmail.com'
+                className='w-full'
               />
               {state.errors?.email &&
                 <p className="text-red-500 text-sm">
@@ -74,6 +76,7 @@ export default function RegisterPage() {
               <Input
                 name="password"
                 type="password"
+                className='w-full'
               />
               {state.errors?.password &&
                 <p className="text-red-500 text-sm">
